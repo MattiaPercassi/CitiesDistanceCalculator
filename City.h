@@ -19,6 +19,9 @@ protected:
 
 public:
     City(std::string, std::string, double, double);
+    // default ctor needed for map creation
+    City(){};
+    City(const City &);
     std::string getName();
     double getLat();
     double getLon();
