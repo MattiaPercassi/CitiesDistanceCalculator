@@ -22,9 +22,9 @@ public:
     // default ctor needed for map creation
     City(){};
     City(const City &);
-    std::string getName();
-    double getLat();
-    double getLon();
+    std::string getName() const;
+    double getLat() const;
+    double getLon() const;
 };
 
 #endif

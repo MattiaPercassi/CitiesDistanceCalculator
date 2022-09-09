@@ -6,15 +6,15 @@
 City::City(std::string nm, std::string ct, double lat, double lon) : name{nm}, country{ct}, latitude{lat}, longitude{lon} {};
 City::City(const City &src) : City(src.name, src.country, src.latitude, src.longitude){};
 
-std::string City::getName()
+std::string City::getName() const
 {
     return name;
 };
-double City::getLat()
+double City::getLat() const
 {
     return latitude;
 };
-double City::getLon()
+double City::getLon() const
 {
     return longitude;
 };

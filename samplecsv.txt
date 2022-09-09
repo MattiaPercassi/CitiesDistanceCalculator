@@ -1,2 +1,2 @@
-Bergamo,Italia,45.42,09.40
-Milano,Italia,45.28,09.11
+Bergamo,Italia,45.69,09.68
+Milano,Italia,45.47,09.19
