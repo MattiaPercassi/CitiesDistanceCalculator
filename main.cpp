@@ -4,10 +4,11 @@
 #include <iostream>
 #include <map>
 #include "Enums.h"
+#include <array>
 
 MenuOptions showMenu();
-
-double calcDistance(const City &, const City &);
+std::array<City, 2> getCities(std::map<std::string, City> &);
+double calcDistance(std::array<City, 2> &);
 
 int main()
 {
@@ -21,9 +22,12 @@ int main()
         switch (showMenu())
         {
         case MenuOptions::CALCULATE:
-            std::cout << "Calculating distance between " << mp.at("Bergamo").getName() << " and " << mp.at("Milano").getName() <<'\n';
-            std::cout << "Distance: " << calcDistance(mp.at("Bergamo"), mp.at("Milano")) << " meters" << std::endl;
+        {
+            auto ct = getCities(mp);
+            std::cout << "The distance between " << ct.at(0).getName() << " and " << ct.at(1).getName() << " is " << calcDistance(ct) << " meters" << std::endl;
             break;
+        }
+
         case MenuOptions::QUIT:
             std::cout << "Quit" << std::endl;
             close = true;
