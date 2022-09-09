@@ -24,7 +24,7 @@ int main()
         case MenuOptions::CALCULATE:
         {
             auto ct = getCities(mp);
-            std::cout << "The distance between " << ct.at(0).getName() << " and " << ct.at(1).getName() << " is " << calcDistance(ct) << " meters" << std::endl;
+            std::cout << "The distance between " << ct.at(0).getName() << " and " << ct.at(1).getName() << " is " << calcDistance(ct) / 1000 << " km" << std::endl;
             break;
         }
 

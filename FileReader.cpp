@@ -3,6 +3,7 @@
 #include <string>
 #include <map>
 #include <fstream>
+#include <iostream>
 
 FileReader::FileReader(std::string filepath) : inputFile{filepath} {};
 FileReader::FileReader() : FileReader(""){};
@@ -19,6 +20,7 @@ std::map<std::string, City> FileReader::readIntoMap()
     std::string lat;
     std::string lon;
     const char separationChar = ',';
+    int counter{0};
     while (std::getline(ifile, line))
     {
         size_t iterator{0};
@@ -27,16 +29,14 @@ std::map<std::string, City> FileReader::readIntoMap()
         line = line.substr(iterator + 1);
 
         iterator = line.find(separationChar);
-        ct = line.substr(0, iterator);
+        lon = line.substr(0, iterator);
         line = line.substr(iterator + 1);
 
-        iterator = line.find(separationChar);
-        lat = line.substr(0, iterator);
-        line = line.substr(iterator + 1);
-
-        lon = line;
-        mp[nm] = City{nm, ct, std::stod(lat), std::stod(lon)};
+        lat = line;
+        mp[nm] = City{nm, "Italia", std::stod(lat), std::stod(lon)};
+        counter++;
     };
+    std::cout << "Data loaded for " << counter << " cities" << std::endl;
     ifile.close();
     return mp;
 };

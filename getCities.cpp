@@ -14,7 +14,7 @@ std::array<City, 2> getCities(std::map<std::string, City> &mp)
     while (!flag1)
     {
         std::cout << "What is the first city? ";
-        std::cin >> input;
+        std::getline(std::cin, input);
         if (mp.find(input) != mp.end())
         {
             arr.at(0) = mp.at(input);
@@ -25,14 +25,15 @@ std::array<City, 2> getCities(std::map<std::string, City> &mp)
         {
             std::cout << input << " is invalid input, retry\n";
         }
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        // since we collect input with getline we do not need to ignore the buffer as no data will be there
+        //  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     };
     std::string input2;
     bool flag2{false};
     while (!flag2)
     {
         std::cout << "What is the second city? ";
-        std::cin >> input2;
+        std::getline(std::cin, input2);
         if (mp.find(input2) != mp.end() && input2 != input)
         {
             arr.at(1) = mp.at(input2);
@@ -43,7 +44,7 @@ std::array<City, 2> getCities(std::map<std::string, City> &mp)
         {
             std::cout << input2 << " is invalid input, retry\n";
         }
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
     return arr;
 };
