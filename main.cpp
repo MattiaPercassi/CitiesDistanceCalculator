@@ -2,7 +2,7 @@
 #include "City.h"
 #include <string>
 #include <iostream>
-#include <map>
+#include <vector>
 #include "Enums.h"
 #include <array>
 #include <chrono>
@@ -16,7 +16,7 @@ int main()
     // setup
     std::chrono::time_point beg = std::chrono::high_resolution_clock::now();
     FileReader fl{"samplecsv.txt"};
-    auto mp = fl.readIntoMap();
+    auto vec = fl.readIntoVec();
     std::chrono::time_point end = std::chrono::high_resolution_clock::now();
     std::chrono::duration interval1 = std::chrono::duration_cast<std::chrono::milliseconds>(end - beg);
     std::cout << "For loading file: " << interval1.count() << " ms" << std::endl;

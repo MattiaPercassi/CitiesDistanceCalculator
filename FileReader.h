@@ -3,7 +3,7 @@
 
 #include <string>
 #include <fstream>
-#include <map>
+#include <vector>
 #include "City.h"
 
 class FileReader
@@ -16,7 +16,7 @@ public:
     FileReader();
 
     // This fileReader is specific for creating a map for this specific application
-    std::map<std::string, City> readIntoMap();
+    std::vector<City> readIntoVec();
 };
 
 #endif

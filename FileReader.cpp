@@ -1,16 +1,16 @@
 #include "FileReader.h"
 #include "City.h"
 #include <string>
-#include <map>
+#include <vector>
 #include <fstream>
 #include <iostream>
 
 FileReader::FileReader(std::string filepath) : inputFile{filepath} {};
 FileReader::FileReader() : FileReader(""){};
 
-std::map<std::string, City> FileReader::readIntoMap()
+std::vector<City> FileReader::readIntoVec()
 {
-    std::map<std::string, City> mp;
+    std::vector<City> vec;
     std::ifstream ifile{inputFile};
     if (!ifile)
         return mp;
@@ -33,10 +33,10 @@ std::map<std::string, City> FileReader::readIntoMap()
         line = line.substr(iterator + 1);
 
         lat = line;
-        mp[nm] = City{nm, "Italia", std::stod(lat), std::stod(lon)};
+        vec.emplace_back(City{nm, "Italia", std::stod(lat), std::stod(lon)});
         counter++;
     };
     std::cout << "Data loaded for " << counter << " cities" << std::endl;
     ifile.close();
-    return mp;
+    return vec;
 };
