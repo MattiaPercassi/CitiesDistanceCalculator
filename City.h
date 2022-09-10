@@ -8,6 +8,8 @@ class City
 {
 
     friend std::ostream &operator<<(std::ostream &, City &);
+    // needed for comparing vec values with inputs
+    friend bool operator==(City &, const std::string &);
     friend bool operator==(City &, City &);
     friend bool operator<(City &, City &);
 

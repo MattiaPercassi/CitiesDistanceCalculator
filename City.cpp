@@ -27,6 +27,11 @@ std::ostream &operator<<(std::ostream &os, City &rhs)
     return os;
 };
 
+bool operator==(City &lhs, const std::string &rhs)
+{
+    return lhs.name == rhs;
+};
+
 bool operator==(City &lhs, City &rhs)
 {
     return (lhs.name == rhs.name && lhs.country == rhs.country);
