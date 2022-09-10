@@ -5,6 +5,7 @@
 #include <limits>
 #include <map>
 #include "City.h"
+#include <chrono>
 
 std::array<City, 2> getCities(std::map<std::string, City> &mp)
 {
@@ -15,6 +16,7 @@ std::array<City, 2> getCities(std::map<std::string, City> &mp)
     {
         std::cout << "What is the first city? ";
         std::getline(std::cin, input);
+        std::chrono::time_point beg = std::chrono::high_resolution_clock::now();
         if (mp.find(input) != mp.end())
         {
             arr.at(0) = mp.at(input);
@@ -25,6 +27,9 @@ std::array<City, 2> getCities(std::map<std::string, City> &mp)
         {
             std::cout << input << " is invalid input, retry\n";
         }
+        std::chrono::time_point end = std::chrono::high_resolution_clock::now();
+        std::chrono::duration interval = std::chrono::duration_cast<std::chrono::microseconds>(end - beg);
+        std::cout << "To check this result took: " << interval.count() << " us" << std::endl;
         // since we collect input with getline we do not need to ignore the buffer as no data will be there
         //  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     };

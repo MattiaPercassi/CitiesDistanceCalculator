@@ -5,6 +5,7 @@
 #include <map>
 #include "Enums.h"
 #include <array>
+#include <chrono>
 
 MenuOptions showMenu();
 std::array<City, 2> getCities(std::map<std::string, City> &);
@@ -13,8 +14,12 @@ double calcDistance(std::array<City, 2> &);
 int main()
 {
     // setup
+    std::chrono::time_point beg = std::chrono::high_resolution_clock::now();
     FileReader fl{"samplecsv.txt"};
     auto mp = fl.readIntoMap();
+    std::chrono::time_point end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration interval1 = std::chrono::duration_cast<std::chrono::milliseconds>(end - beg);
+    std::cout << "For loading file: " << interval1.count() << " ms" << std::endl;
     // code
     bool close{false};
     while (!close)
