@@ -13,7 +13,7 @@ std::vector<City> FileReader::readIntoVec()
     std::vector<City> vec;
     std::ifstream ifile{inputFile};
     if (!ifile)
-        return mp;
+        return vec;
     std::string line;
     std::string nm;
     std::string ct;

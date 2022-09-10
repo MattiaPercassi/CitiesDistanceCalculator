@@ -8,7 +8,7 @@
 #include <chrono>
 
 MenuOptions showMenu();
-std::array<City, 2> getCities(std::map<std::string, City> &);
+std::array<City, 2> getCities(std::vector<City> &);
 double calcDistance(std::array<City, 2> &);
 
 int main()
@@ -28,7 +28,7 @@ int main()
         {
         case MenuOptions::CALCULATE:
         {
-            auto ct = getCities(mp);
+            auto ct = getCities(vec);
             std::cout << "The distance between " << ct.at(0).getName() << " and " << ct.at(1).getName() << " is " << calcDistance(ct) / 1000 << " km" << std::endl;
             break;
         }

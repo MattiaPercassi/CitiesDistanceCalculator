@@ -3,11 +3,12 @@
 #include <sstream>
 #include <iostream>
 #include <limits>
-#include <map>
+#include <vector>
+#include <algorithm>
 #include "City.h"
 #include <chrono>
 
-std::array<City, 2> getCities(std::map<std::string, City> &mp)
+std::array<City, 2> getCities(std::vector<City> &vec)
 {
     std::array<City, 2> arr;
     std::string input;
@@ -17,9 +18,9 @@ std::array<City, 2> getCities(std::map<std::string, City> &mp)
         std::cout << "What is the first city? ";
         std::getline(std::cin, input);
         std::chrono::time_point beg = std::chrono::high_resolution_clock::now();
-        if (mp.find(input) != mp.end())
+        if (std::find(vec.begin(), vec.end(), input) != vec.end())
         {
-            arr.at(0) = mp.at(input);
+            arr.at(0) = vec.at(std::find(vec.begin(), vec.end(), input) != vec.end());
             std::cout << "First city: " << input << std::endl;
             flag1 = true;
         }
@@ -39,9 +40,9 @@ std::array<City, 2> getCities(std::map<std::string, City> &mp)
     {
         std::cout << "What is the second city? ";
         std::getline(std::cin, input2);
-        if (mp.find(input2) != mp.end() && input2 != input)
+        if (std::find(vec.begin(), vec.end(), input2) != vec.end() && input2 != input)
         {
-            arr.at(1) = mp.at(input2);
+            arr.at(1) = vec.at(std::find(vec.begin(), vec.end(), input) != vec.end());
             std::cout << "Second city: " << input2 << std::endl;
             flag2 = true;
         }
